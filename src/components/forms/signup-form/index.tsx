@@ -1,9 +1,11 @@
 import React from "react";
-
-import { MdArrowOutward, MdVisibility, MdVisibilityOff } from "react-icons/md";
+import { MdVisibility, MdVisibilityOff, MdArrowOutward } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const LoginForm = () => {
+const SignupForm = () => {
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -12,11 +14,47 @@ const LoginForm = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md bg-white rounded-md p-4">
-        <h1 className="font-bold text-2xl">Login</h1>
-        <p>Hi, Welcome back 👋🏻</p>
+        <h1 className="font-bold text-2xl">Create Account</h1>
+        <p>Please fill your details to create an account</p>
 
         <div className="pt-4 sm:mx-auto sm:w-full sm:max-w-md">
           <form className="space-y-4">
+            <div>
+              <label
+                className="block text-sm font-medium text-gray-500"
+                htmlFor="first-name"
+              >
+                First Name
+              </label>
+              <input
+                className="mt-1 sm:text-sm appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-300 focus:outline-none focus:ring-blue-500"
+                name="first-name"
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="John"
+                required
+                type="text"
+                value={firstName}
+              />
+            </div>
+
+            <div>
+              <label
+                className="block text-sm font-medium text-gray-500"
+                htmlFor="last-name"
+              >
+                Last Name
+              </label>
+              <input
+                className="mt-1 sm:text-sm appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-300 focus:outline-none focus:ring-blue-500"
+                name="last-name"
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Doe"
+                required
+                type="text"
+                value={lastName}
+              />
+            </div>
+
             <div>
               <label
                 className="block text-sm font-medium text-gray-500"
@@ -26,7 +64,7 @@ const LoginForm = () => {
               </label>
               <input
                 className="mt-1 sm:text-sm appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-300 focus:outline-none focus:ring-blue-500"
-                name="email"
+                name="name"
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="E.g. johndoe@gmail.com"
                 required
@@ -68,31 +106,22 @@ const LoginForm = () => {
               </div>
             </div>
 
-            <div className="flex justify-end">
-              <Link
-                className="text-sm font-bold text-blue-700 hover:text-blue-500"
-                to={"/forgot-password"}
-              >
-                Forgot Password?
-              </Link>
-            </div>
-
             <div>
               <button
                 className="flex justify-center items-center h-[40px] w-full bg-blue-700 py-2 text-sm font-medium text-white rounded-md hover:bg-blue-500"
                 type="submit"
               >
-                Login
+                Create Account
               </button>
             </div>
 
-            <div className="flex items-center space-x-1 text-sm">
-              <p>Not yet registered? </p>
+            <div className="flex justify-center items-center space-x-1 text-sm">
+              <p>Already registered? </p>
               <Link
                 className="flex items-center text-sm font-bold text-blue-700 hover:text-blue-600"
-                to={"/create-account"}
+                to={"/login"}
               >
-                Create Account
+                Login
                 <MdArrowOutward size={24} />
               </Link>
             </div>
@@ -103,4 +132,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;
